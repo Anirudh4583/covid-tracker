@@ -2,13 +2,31 @@ import numeral from 'numeral';
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
+const casesTypeColors = {
+  cases: {
+    hex: '#CC1034',
+    half_op: 'rgba(204, 16, 52, 0.5)',
+    label: 'New Active Cases',
+  },
+  recovered: {
+    hex: '#7dd71d',
+    half_op: 'rgba(125, 215, 29, 0.5)',
+    label: 'New Recovered Cases',
+  },
+  deaths: {
+    hex: '#808080',
+    half_op: 'rgba(128,128,128, 0.5)',
+    label: 'New Deaths',
+  },
+};
+
 const options = {
   legend: {
     display: false,
   },
   elements: {
     point: {
-      radius: 0,
+      radius: 2.2,
     },
   },
   maintainAspectRatio: false,
@@ -46,25 +64,25 @@ const options = {
   },
 };
 
-function LineGraph({ casesType = 'cases' }) {
-  const [data, setData] = useState([]);
+const buildChartData = (data, casesType) => {
+  const chartData = [];
+  let lastDataPoint;
 
-  const buildChartData = (data, casesType = 'cases') => {
-    const chartData = [];
-    let lastDataPoint;
-
-    for (let date in data.cases) {
-      if (lastDataPoint) {
-        const newDataPoint = {
-          x: date,
-          y: data[casesType][date] - lastDataPoint,
-        };
-        chartData.push(newDataPoint);
-      }
-      lastDataPoint = data[casesType][date];
+  for (let date in data.cases) {
+    if (lastDataPoint) {
+      const newDataPoint = {
+        x: date,
+        y: data[casesType][date] - lastDataPoint,
+      };
+      chartData.push(newDataPoint);
     }
-    return chartData;
-  };
+    lastDataPoint = data[casesType][date];
+  }
+  return chartData;
+};
+
+function LineGraph({ casesType, className }) {
+  const [data, setData] = useState([]);
 
   // https://disease.sh/v3/covid-19/historical/all?lastdays=30
   // lastdays = value of no. of days
@@ -75,8 +93,8 @@ function LineGraph({ casesType = 'cases' }) {
         .then((res) => res.json())
         .then((data) => {
           // kuch kuch karna hai data ka
-          console.log(data);
-          const chartData = buildChartData(data);
+          // console.log(data);
+          let chartData = buildChartData(data, casesType);
           setData(chartData);
         });
     };
@@ -85,20 +103,24 @@ function LineGraph({ casesType = 'cases' }) {
   }, [casesType]);
 
   return (
-    <div>
+    <div className={className}>
       {/* run only if data isnt empty my boi */}
-      <Line
-        data={{
-          datasets: [
-            {
-              backgroundColor: 'rgba(204, 16, 52, 0.5)',
-              borderColor: '#CC1034',
-              data: data,
-            },
-          ],
-        }}
-        // options={options}
-      />
+      {data?.length > 0 && (
+        <Line
+          data={{
+            datasets: [
+              {
+                label: casesTypeColors[casesType].label,
+                backgroundColor: casesTypeColors[casesType].half_op,
+                borderColor: casesTypeColors[casesType].hex,
+                data: data,
+                fill: true,
+              },
+            ],
+          }}
+          options={options}
+        />
+      )}
     </div>
   );
 }

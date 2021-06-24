@@ -1,18 +1,26 @@
 .chart {
-    margin-top: 20px;
-    overflow-y: scroll;
-    height: 400px;
-    color: #6a5d5d;
+  margin-top: 20px;
+  overflow-y: scroll;
+  height: 400px;
+  width: 450px;
+  color: #6a5d5d;
 }
 
 .chart tr:nth-of-type(odd) {
-    background-color: #f3f2f8;
+  background-color: #f3f2f8;
 }
 .chart tr {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .chart td {
-    padding: 0.5rem;
+  padding: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .chart {
+    width: 90%;
+    margin-left: 5%;
+  }
 }

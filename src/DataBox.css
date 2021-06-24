@@ -1,0 +1,28 @@
+.databox {
+  flex: 1;
+  cursor: pointer;
+}
+
+.databox:not(:first-child) {
+  margin-left: 20px;
+}
+
+#databox__cases {
+  color: #cc1034;
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.Confirmed.databox--active {
+  border-left: 10px solid #cc1034;
+  box-sizing: border-box;
+}
+.Recovered.databox--active {
+  border-left: 10px solid #7dd71d;
+  box-sizing: border-box;
+}
+.Deaths.databox--active {
+  border-left: 10px solid #808080;
+  box-sizing: border-box;
+}

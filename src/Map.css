@@ -1,0 +1,30 @@
+.map {
+  height: 566px;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 20px;
+  margin: 16px;
+  box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+}
+
+.map .leaflet-container {
+  height: 100%;
+}
+
+.pop-flag {
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  opacity: 0.9;
+  border: 3px solid rgba(0, 0, 0, 0.6);
+}
+
+.pop-flag:hover {
+  opacity: 1;
+}
+
+.pop-info.country {
+  font-weight: bold;
+  font-size: 14px;
+}
