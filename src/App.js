@@ -112,7 +112,7 @@ function App() {
             varient='filled'
             className='app__dropdown'
             style={{
-              left: '39%',
+              // left: '39%',
               minWidth: '160px',
             }}
           >

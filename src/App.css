@@ -2,6 +2,11 @@
   margin: 0;
 }
 
+.app__tool {
+  display: flex;
+  justify-content: space-between;
+}
+
 .app__body {
   display: flex;
   flex-direction: row;
@@ -49,8 +54,8 @@
 }
 
 .app__icons {
-  position: absolute;
-  right: 45px;
+  /* position: absolute; */
+  /* right: 45px; */
 }
 
 .app__footer {
