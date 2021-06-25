@@ -48,14 +48,15 @@
   }
 }
 
+@media (max-width: 468px) {
+  .app__body {
+    margin-top: 150px;
+  }
+}
+
 .logo {
   height: 60px;
   margin: 10px 0;
-}
-
-.app__icons {
-  /* position: absolute; */
-  /* right: 45px; */
 }
 
 .app__footer {
