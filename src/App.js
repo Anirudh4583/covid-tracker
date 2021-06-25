@@ -7,11 +7,8 @@ import {
   Select,
   InputLabel,
   Link,
-  Container,
-  Typography,
 } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -19,12 +16,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 
-import DataBox from './DataBox';
-import Map from './Map';
-import Chart from './Chart';
-import { formatCases, sortData } from './util';
-import LineGraph from './LineGraph';
-// import logo from './logo-bg.png';
+import DataBox from './components/Databox/DataBox';
+import Map from './components/Map/Map';
+import Chart from './components/Chart/Chart';
+import { formatCases, sortData } from './Util/util';
+import LineGraph from './components/LineGraph/LineGraph';
 import logov from './logo.mp4';
 
 import 'leaflet/dist/leaflet.css';
